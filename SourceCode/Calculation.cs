@@ -56,9 +56,16 @@ namespace Mathml
             }
             else if (operation.Contains("DIVIDE"))
             {
-                operationName = OperationName.DIVIDE;
-                operationChar = '/';
-                calculationResult = value1 / value2;
+                if (value2 == 0)
+                {
+                    throw new DivideByZeroException("Cannot divide by zero.");
+                }
+                else
+                {
+                    operationName = OperationName.DIVIDE;
+                    operationChar = '/';
+                    calculationResult = value1 / value2;
+                }
             }
             else if (operation.Contains("POWER"))
             {
